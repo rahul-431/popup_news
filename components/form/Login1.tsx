@@ -111,7 +111,7 @@ const Login1 = () => {
           </div>
           <div className="flex items-center flex-col">
             <p className="text-sm">
-              Don't have an account?{" "}
+              Dont have an account?{" "}
               <Link href="#" className="font-semibold">
                 Register now
               </Link>

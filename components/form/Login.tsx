@@ -103,7 +103,7 @@ const Login = () => {
               Login
             </Button>
             <p className="text-sm">
-              Don't have an account?{" "}
+              Dont have an account?{" "}
               <Link href="/?authType=signup" className="font-semibold">
                 Register now
               </Link>
