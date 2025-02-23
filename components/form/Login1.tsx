@@ -12,7 +12,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "../ui/button";
 import { useState } from "react";
 import Link from "next/link";
 import {
@@ -29,13 +28,9 @@ const loginFormSchema = z.object({
     .string()
     .trim()
     .min(8, { message: "Password must be 8 character long" }),
-  cpassword: z
-    .string()
-    .trim()
-    .min(8, { message: "Password must be 8 character long" }),
 });
 
-const Signup = () => {
+const Login1 = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   //define form
@@ -52,10 +47,10 @@ const Signup = () => {
     console.log(values);
   };
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-1 text-center">
-        <h1 className="font-semibold text-2xl ">Create Your account</h1>
-        {/* <p className="text-sm ">Login to your account</p> */}
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-1">
+        <h1 className="font-semibold text-2xl ">Welcome Back</h1>
+        <p className="text-sm ">Login to your account</p>
       </div>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -77,15 +72,14 @@ const Signup = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="font-semibold text-left">
-                  Password
-                </FormLabel>
+                <FormLabel className="font-semibold">Password</FormLabel>
                 <FormControl>
                   <div className="flex items-center justify-between relative">
                     <Input
                       type={showPassword ? "text" : "password"}
                       placeholder="********"
                       {...field}
+                      className=""
                     />
                     <span
                       className="absolute right-5 cursor-pointer"
@@ -103,49 +97,27 @@ const Signup = () => {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="cpassword"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="font-semibold">
-                  Confirm Password
-                </FormLabel>
-                <FormControl>
-                  <div className="flex items-center justify-between relative">
-                    <Input
-                      type={showPassword ? "text" : "password"}
-                      placeholder="********"
-                      {...field}
-                    />
-                    <span
-                      className="absolute right-5 cursor-pointer"
-                      onClick={() => setShowPassword((prev) => !prev)}
-                    >
-                      {!showPassword ? (
-                        <FaRegEye color="gray" />
-                      ) : (
-                        <FaRegEyeSlash />
-                      )}
-                    </span>
-                  </div>
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <div className="flex flex-col items-center justify-center gap-2">
-            <Button type="submit" className="rounded-full w-full">
-              Signup
-            </Button>
+
+          <div className="flex justify-between items-center">
+            <button
+              type="submit"
+              className="rounded-full px-4 py-1 min-w-32 bg-black text-white"
+            >
+              Login
+            </button>
+            <Link href="#" className="text-sm font-semibold">
+              Forget Passoword?
+            </Link>
+          </div>
+          <div className="flex items-center flex-col">
             <p className="text-sm">
-              Already have an account?{" "}
-              <Link href="/?authType=login" className="font-semibold">
-                login
+              Don't have an account?{" "}
+              <Link href="#" className="font-semibold">
+                Register now
               </Link>
             </p>
             <h1 className="text-center text-sm my-2 font-light">
-              Or Signup with
+              Or login with
             </h1>
             <div className="flex gap-3 items-center">
               <button className="p-1 text-sm bg-black rounded-full text-white">
@@ -165,4 +137,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login1;

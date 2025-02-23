@@ -54,7 +54,7 @@ const Login = () => {
         <p className="text-sm ">Login to your account</p>
       </div>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField
             control={form.control}
             name="email"
@@ -104,7 +104,7 @@ const Login = () => {
             </Button>
             <p className="text-sm">
               Don't have an account?{" "}
-              <Link href="#" className="font-semibold">
+              <Link href="/?authType=signup" className="font-semibold">
                 Register now
               </Link>
             </p>

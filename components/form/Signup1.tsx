@@ -12,7 +12,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "../ui/button";
 import { useState } from "react";
 import Link from "next/link";
 import {
@@ -35,7 +34,7 @@ const loginFormSchema = z.object({
     .min(8, { message: "Password must be 8 character long" }),
 });
 
-const Signup = () => {
+const Signup1 = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   //define form
@@ -53,7 +52,7 @@ const Signup = () => {
   };
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-col gap-1 text-center">
+      <div className="flex flex-col gap-1">
         <h1 className="font-semibold text-2xl ">Create Your account</h1>
         {/* <p className="text-sm ">Login to your account</p> */}
       </div>
@@ -134,18 +133,23 @@ const Signup = () => {
               </FormItem>
             )}
           />
-          <div className="flex flex-col items-center justify-center gap-2">
-            <Button type="submit" className="rounded-full w-full">
+          <div className="flex justify-between items-center gap-4">
+            <button
+              type="submit"
+              className="rounded-full px-2 sm:px-4 py-1 w-24 sm:min-w-32 bg-black text-white"
+            >
               Signup
-            </Button>
+            </button>
             <p className="text-sm">
               Already have an account?{" "}
-              <Link href="/?authType=login" className="font-semibold">
+              <Link href="#" className="font-semibold">
                 login
               </Link>
             </p>
+          </div>
+          <div className="flex items-center flex-col">
             <h1 className="text-center text-sm my-2 font-light">
-              Or Signup with
+              Or Register with
             </h1>
             <div className="flex gap-3 items-center">
               <button className="p-1 text-sm bg-black rounded-full text-white">
@@ -165,4 +169,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Signup1;
