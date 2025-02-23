@@ -14,7 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 const Home = () => {
-  //for testing only --from here
+  //for testing only for tabs routing --from here
 
   const searchParams = useSearchParams();
   const pathname = usePathname();
