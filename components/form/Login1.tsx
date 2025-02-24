@@ -49,6 +49,7 @@ const Login1 = () => {
   //submit handler
   const onSubmit = (values: z.infer<typeof loginFormSchema>) => {
     console.log(values);
+    form.reset();
   };
   return (
     <div className="flex flex-col gap-8">
@@ -114,12 +115,6 @@ const Login1 = () => {
             </Link>
           </div>
           <div className="flex items-center flex-col">
-            <p className="text-sm">
-              Dont have an account?{" "}
-              <Link href="#" className="font-semibold">
-                Register now
-              </Link>
-            </p>
             <h1 className="text-center text-sm my-2 font-light">
               Or login with
             </h1>

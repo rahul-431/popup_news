@@ -58,6 +58,7 @@ const Signup = () => {
   //submit handler
   const onSubmit = (values: z.infer<typeof signupFormSchema>) => {
     console.log(values);
+    form.reset();
   };
   return (
     <div className="flex flex-col gap-6">
@@ -146,12 +147,6 @@ const Signup = () => {
             <Button type="submit" className="rounded-full w-full">
               Signup
             </Button>
-            <p className="text-sm">
-              Already have an account?{" "}
-              <Link href="/?authType=login" className="font-semibold">
-                login
-              </Link>
-            </p>
             <h1 className="text-center text-sm my-2 font-light">
               Or Signup with
             </h1>

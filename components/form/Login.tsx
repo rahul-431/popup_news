@@ -31,7 +31,7 @@ const loginFormSchema = z
       .trim()
       .min(1, { message: "This field can not be empty" })
       .email(),
-    password: passwordSchema
+    password: passwordSchema,
   })
   .required();
 const Login = () => {
@@ -49,6 +49,7 @@ const Login = () => {
   //submit handler
   const onSubmit = (values: z.infer<typeof loginFormSchema>) => {
     console.log(values);
+    form.reset();
   };
   return (
     <div className="flex flex-col gap-8">
@@ -105,12 +106,6 @@ const Login = () => {
             <Button type="submit" className="rounded-full w-full">
               Login
             </Button>
-            <p className="text-sm">
-              Dont have an account?{" "}
-              <Link href="/?authType=signup" className="font-semibold">
-                Register now
-              </Link>
-            </p>
             <Link href="#" className="text-sm font-semibold">
               Forget Passoword?
             </Link>
