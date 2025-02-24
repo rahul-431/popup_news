@@ -49,7 +49,10 @@ const Login1 = () => {
   //submit handler
   const onSubmit = (values: z.infer<typeof loginFormSchema>) => {
     console.log(values);
-    form.reset();
+    form.reset({
+      email: "",
+      password: "",
+    });
   };
   return (
     <div className="flex flex-col gap-8">

@@ -13,7 +13,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import Link from "next/link";
 import {
   FaApple,
   FaFacebookF,
@@ -57,7 +56,11 @@ const Signup1 = () => {
   //submit handler
   const onSubmit = (values: z.infer<typeof signupFormSchema>) => {
     console.log(values);
-    form.reset();
+    form.reset({
+      email: "",
+      password: "",
+      cpassword: "",
+    });
   };
   return (
     <div className="flex flex-col gap-6">
