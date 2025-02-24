@@ -21,14 +21,18 @@ import {
   FaRegEye,
   FaRegEyeSlash,
 } from "react-icons/fa";
+import { passwordSchema } from "@/lib/utils";
 
-const loginFormSchema = z.object({
-  email: z.string().trim().email().nonempty({ message: "Email is required" }),
-  password: z
-    .string()
-    .trim()
-    .min(8, { message: "Password must be 8 character long" }),
-});
+const loginFormSchema = z
+  .object({
+    email: z
+      .string()
+      .trim()
+      .min(1, { message: "This field can not be empty" })
+      .email(),
+    password: passwordSchema,
+  })
+  .required();
 
 const Login1 = () => {
   const [showPassword, setShowPassword] = useState(false);

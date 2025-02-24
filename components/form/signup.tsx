@@ -22,33 +22,41 @@ import {
   FaRegEye,
   FaRegEyeSlash,
 } from "react-icons/fa";
+import { passwordSchema } from "@/lib/utils";
 
-const loginFormSchema = z.object({
-  email: z.string().trim().email().nonempty({ message: "Email is required" }),
-  password: z
-    .string()
-    .trim()
-    .min(8, { message: "Password must be 8 character long" }),
-  cpassword: z
-    .string()
-    .trim()
-    .min(8, { message: "Password must be 8 character long" }),
-});
+const signupFormSchema = z
+  .object({
+    email: z
+      .string()
+      .trim()
+      .min(1, { message: "This field can not be empty" })
+      .email(),
+    password: passwordSchema,
+    cpassword: z
+      .string()
+      .trim()
+      .min(1, { message: "This field can not be empty" }),
+  })
+  .refine((data) => data.password === data.cpassword, {
+    message: "Passwords did not match",
+    path: ["cpassword"],
+  });
 
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   //define form
-  const form = useForm<z.infer<typeof loginFormSchema>>({
-    resolver: zodResolver(loginFormSchema),
+  const form = useForm<z.infer<typeof signupFormSchema>>({
+    resolver: zodResolver(signupFormSchema),
     defaultValues: {
       email: "",
       password: "",
+      cpassword: "",
     },
   });
 
   //submit handler
-  const onSubmit = (values: z.infer<typeof loginFormSchema>) => {
+  const onSubmit = (values: z.infer<typeof signupFormSchema>) => {
     console.log(values);
   };
   return (
